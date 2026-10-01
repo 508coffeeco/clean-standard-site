@@ -2,7 +2,30 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/services/:path", "destination": "/:path", "permanent": true },
-    { "source": "/cart", "destination": "/contact", "permanent": true }
+    {
+      "source": "/services",
+      "destination": "/commercial",
+      "permanent": true
+    },
+    {
+      "source": "/commerical",
+      "destination": "/commercial",
+      "permanent": true
+    },
+    {
+      "source": "/gallery",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/cart",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/blog/commercial-cleaning-cost-massachusetts",
+      "destination": "/blog/commercial-cleaning-cost-tampa",
+      "permanent": true
+    }
   ]
 }

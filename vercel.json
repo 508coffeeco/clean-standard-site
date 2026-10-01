@@ -26,6 +26,21 @@
       "source": "/blog/commercial-cleaning-cost-massachusetts",
       "destination": "/blog/commercial-cleaning-cost-tampa",
       "permanent": true
+    },
+    {
+      "source": "/office-cleaning-tampa",
+      "destination": "/blog/office-cleaning-tampa",
+      "permanent": true
+    },
+    {
+      "source": "/medical-office-cleaning",
+      "destination": "/blog/medical-office-cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/property-management-cleaning",
+      "destination": "/blog/property-management-cleaning",
+      "permanent": true
     }
   ]
 }

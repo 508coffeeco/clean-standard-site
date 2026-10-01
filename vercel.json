@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/services/:path", "destination": "/:path", "permanent": true },
+    { "source": "/cart", "destination": "/contact", "permanent": true }
+  ]
+}

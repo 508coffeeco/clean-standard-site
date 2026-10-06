@@ -60,6 +60,18 @@
 }
 </style>
 
+<style id="tcs-reviews-css">
+.tcs-rv-wrap{display:grid;max-width:820px;margin:0 auto}
+.tcs-rv{grid-area:1/1;margin:0;opacity:0;visibility:hidden;transition:opacity .7s ease,visibility .7s}
+.tcs-rv.on{opacity:1;visibility:visible}
+.tcs-rv-dots{display:flex;justify-content:center;gap:8px;margin-top:26px;position:relative;z-index:1}
+.tcs-rv-dot{width:9px;height:9px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.4);cursor:pointer;transition:width .25s,background .25s}
+.tcs-rv-dot.on{width:24px;background:#fff}
+.tcs-rv-link{display:inline-block;margin-top:22px;font-family:var(--sub);font-size:13px;font-weight:700;letter-spacing:.08em;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:3px;position:relative;z-index:1}
+.tcs-rv-link:hover{border-color:#fff}
+@media (prefers-reduced-motion:reduce){.tcs-rv{transition:none}}
+</style>
+
 <style id="tcs-promo-css">
 /* Floating buttons: stack on phones instead of overlapping */
 @media(max-width:720px){
@@ -646,8 +658,15 @@ footer .orb{background:rgba(178,221,223,.06);width:340px;height:340px;top:-160px
   <div class="dot-deco-2"><div class="dot-grid white" style="--cols:5" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
   <div class="wrap reveal">
     <div class="proof-stars">★ ★ ★ ★ ★</div>
-    <blockquote>I run an Airbnb in the Norton, MA area and needed a dependable cleaning company. Extremely professional and always on time — our guest reviews have improved since switching.</blockquote>
-    <cite>Louie · Norton, MA</cite>
+    <div class="tcs-rv-wrap" aria-roledescription="carousel" aria-label="Client reviews">
+      <figure class="tcs-rv on"><blockquote>The Clean Standard is amazing!! My house looked better than when it was brand new! Very easy to work with even with my difficult schedule.</blockquote><cite>Lea S. · Google review</cite></figure>
+      <figure class="tcs-rv"><blockquote>Brenna and Dominique were punctual, professional, and very thorough. All the rooms looked and smelled great. Communication with Brenna was easy and pricing was fair.</blockquote><cite>Greg K. · Google review</cite></figure>
+      <figure class="tcs-rv"><blockquote>Extremely professional and always on time — our guest reviews have improved since switching.</blockquote><cite>Louie · Airbnb host</cite></figure>
+      <figure class="tcs-rv"><blockquote>My house was a mess after being inside with the snow storms. She did a tremendous job making the house look spotless. Highly recommend her for anyone looking for cleaning services.</blockquote><cite>Noah L. · Google review</cite></figure>
+      <figure class="tcs-rv"><blockquote>Truly professional, good cleaner and always prompt/on time. This service is the best!!</blockquote><cite>Mia R. · Google review</cite></figure>
+    </div>
+    <div class="tcs-rv-dots"><button type="button" class="tcs-rv-dot on" aria-label="Show review 1"></button><button type="button" class="tcs-rv-dot" aria-label="Show review 2"></button><button type="button" class="tcs-rv-dot" aria-label="Show review 3"></button><button type="button" class="tcs-rv-dot" aria-label="Show review 4"></button><button type="button" class="tcs-rv-dot" aria-label="Show review 5"></button></div>
+    <a class="tcs-rv-link" href="https://maps.google.com/?cid=14996845858421621642" target="_blank" rel="noopener">5.0 on Google · Read our reviews →</a>
   </div>
 </section>
 
@@ -833,6 +852,21 @@ document.querySelectorAll('.acc-btn').forEach(btn=>{
 <style class="transform-overrides-vars">
   
 </style>
+
+<script>
+(function(){
+  document.querySelectorAll('.tcs-rv-wrap').forEach(function(w){
+    var s=w.querySelectorAll('.tcs-rv'),d=w.parentElement.querySelectorAll('.tcs-rv-dot'),i=0,t=null;
+    var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function go(n){s[i].classList.remove('on');d[i].classList.remove('on');i=(n+s.length)%s.length;s[i].classList.add('on');d[i].classList.add('on');}
+    function play(){if(still)return;stop();t=setInterval(function(){go(i+1);},7000);}
+    function stop(){if(t){clearInterval(t);t=null;}}
+    d.forEach(function(b,n){b.addEventListener('click',function(){go(n);play();});});
+    w.addEventListener('mouseenter',stop);w.addEventListener('mouseleave',play);
+    play();
+  });
+})();
+</script>
 
 <script>
 (function(){

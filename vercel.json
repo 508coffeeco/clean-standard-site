@@ -41,6 +41,26 @@
       "source": "/property-management-cleaning",
       "destination": "/blog/property-management-cleaning",
       "permanent": true
+    },
+    {
+      "source": "/gym-retail-cleaning",
+      "destination": "/blog/gym-retail-cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/coworking-cleaning",
+      "destination": "/blog/coworking-cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/post-construction-cleaning",
+      "destination": "/blog/post-construction-cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/venue-brewery-church-cleaning",
+      "destination": "/blog/venue-brewery-church-cleaning",
+      "permanent": true
     }
   ]
 }

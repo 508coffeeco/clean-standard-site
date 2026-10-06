@@ -59,6 +59,25 @@
   .tcs-ann{font-size:12px;padding:10px 40px}
 }
 </style>
+
+<style id="tcs-carousel-css">
+.tcs-carousel{touch-action:pan-y}
+.tcs-carousel .tcs-slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .8s ease}
+.tcs-carousel .tcs-slide.on{opacity:1}
+.tcs-carousel .tcs-slide img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.tcs-carousel figcaption{position:absolute;left:14px;bottom:16px;z-index:3;background:rgba(255,255,255,.92);color:var(--teal);font-family:var(--sub);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+.tcs-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--teal);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 14px rgba(20,40,45,.18);opacity:0;transition:opacity .2s ease,transform .2s ease}
+.tcs-arrow svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.tcs-arrow.prev{left:14px}.tcs-arrow.next{right:14px}
+.tcs-carousel:hover .tcs-arrow,.tcs-carousel:focus-within .tcs-arrow{opacity:1}
+.tcs-arrow:hover{transform:translateY(-50%) scale(1.06)}
+.tcs-dots{position:absolute;right:16px;bottom:20px;z-index:3;display:flex;gap:7px}
+.tcs-dot{width:9px;height:9px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.55);cursor:pointer;transition:width .25s ease,background .25s ease}
+.tcs-dot.on{width:24px;background:#fff}
+.tcs-carousel:focus-visible{outline:3px solid var(--teal);outline-offset:4px}
+@media (hover:none){.tcs-arrow{opacity:1;width:38px;height:38px}}
+@media (prefers-reduced-motion:reduce){.tcs-carousel .tcs-slide{transition:none}}
+</style>
 </head>
 <body>
 
@@ -481,9 +500,14 @@ footer{margin-bottom:0!important;padding-bottom:32px!important}
       </div>
     </div>
     <div class="reveal d1">
-      <div class="media tall" data-label="Modern commercial office space">
-    <img src="/images/photo-3.jpg" alt="Modern commercial office with breakroom counter, seating, and natural light" loading="lazy" onerror="this.closest('.media').classList.add('fallback')">
-    <span class="corner-tag">Where Clean Meets Consistency</span>
+      <div class="media tall tcs-carousel" data-label="Commercial spaces we clean" role="region" aria-roledescription="carousel" aria-label="Photos of commercial spaces we clean" tabindex="0">
+      <figure class="tcs-slide on" aria-roledescription="slide" aria-label="1 of 3: Office"><img src="/images/photo-3.jpg" alt="Commercial office breakroom with seating and natural light, professionally cleaned" fetchpriority="high" decoding="async"><figcaption>Office</figcaption></figure>
+      <figure class="tcs-slide" aria-roledescription="slide" aria-label="2 of 3: Restroom"><img src="/images/commercial-restroom.jpg" alt="Commercial restroom with polished tile floors, stalls, and sinks after cleaning" loading="lazy" decoding="async"><figcaption>Restroom</figcaption></figure>
+      <figure class="tcs-slide" aria-roledescription="slide" aria-label="3 of 3: Restaurant"><img src="/images/commercial-restaurant.jpg" alt="Restaurant bar and dining area with clean floors and set tables" loading="lazy" decoding="async"><figcaption>Restaurant</figcaption></figure>
+      <span class="corner-tag">Where Clean Meets Consistency</span>
+      <button type="button" class="tcs-arrow prev" aria-label="Previous photo"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+      <button type="button" class="tcs-arrow next" aria-label="Next photo"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+      <div class="tcs-dots"><button type="button" class="tcs-dot on" aria-label="Show Office photo" aria-current="true"></button><button type="button" class="tcs-dot" aria-label="Show Restroom photo"></button><button type="button" class="tcs-dot" aria-label="Show Restaurant photo"></button></div>
   </div>
     </div>
   </div>
@@ -721,5 +745,27 @@ document.querySelectorAll('.acc-btn').forEach(btn=>{
 <style class="transform-overrides-vars">
   
 </style>
+
+<script>
+(function(){
+  document.querySelectorAll('.tcs-carousel').forEach(function(c){
+    var s=c.querySelectorAll('.tcs-slide'),d=c.querySelectorAll('.tcs-dot'),i=0,t=null;
+    var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function go(n){s[i].classList.remove('on');d[i].classList.remove('on');d[i].removeAttribute('aria-current');
+      i=(n+s.length)%s.length;s[i].classList.add('on');d[i].classList.add('on');d[i].setAttribute('aria-current','true');}
+    function play(){if(still)return;stop();t=setInterval(function(){go(i+1);},5000);}
+    function stop(){if(t){clearInterval(t);t=null;}}
+    c.querySelector('.prev').addEventListener('click',function(){go(i-1);play();});
+    c.querySelector('.next').addEventListener('click',function(){go(i+1);play();});
+    d.forEach(function(b,n){b.addEventListener('click',function(){go(n);play();});});
+    c.addEventListener('mouseenter',stop);c.addEventListener('mouseleave',play);
+    c.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){go(i-1);play();}if(e.key==='ArrowRight'){go(i+1);play();}});
+    var x=null;c.addEventListener('touchstart',function(e){x=e.touches[0].clientX;stop();},{passive:true});
+    c.addEventListener('touchend',function(e){if(x===null)return;var dx=e.changedTouches[0].clientX-x;if(Math.abs(dx)>40)go(dx<0?i+1:i-1);x=null;play();});
+    document.addEventListener('visibilitychange',function(){document.hidden?stop():play();});
+    play();
+  });
+})();
+</script>
 </body>
 </html>

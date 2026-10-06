@@ -26,7 +26,7 @@
 .tcs-ann{background:#2E6C76;color:#fff;font-family:"DM Sans","Helvetica Neue",Arial,sans-serif;font-size:13px;letter-spacing:.005em;text-align:center;padding:11px 44px;position:relative;line-height:1.5}
 .tcs-ann a{color:#fff;text-decoration:underline;text-underline-offset:2px;font-weight:500}
 .tcs-ann button{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:0;color:#fff;font-size:18px;line-height:1;cursor:pointer;opacity:.85}
-.tcs-hdr{position:sticky;top:0;z-index:999;background:#fff;box-shadow:0 2px 14px rgba(20,40,45,.08)}
+.tcs-hdr{position:sticky;top:0;z-index:160;background:#fff;box-shadow:0 2px 14px rgba(20,40,45,.08)}
 .tcs-hdr-in{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:10px 4vw;min-height:98px;max-width:1600px;margin:0 auto}
 .tcs-logo img{height:78px;width:auto;display:block}
 .tcs-nav{display:flex;align-items:center;gap:30px}
@@ -47,7 +47,7 @@
 .tcs-open .tcs-burger span:nth-child(1){top:17px;transform:rotate(45deg)}
 .tcs-open .tcs-burger span:nth-child(2){opacity:0}
 .tcs-open .tcs-burger span:nth-child(3){top:17px;transform:rotate(-45deg)}
-.tcs-mmenu{display:none;position:fixed;left:0;right:0;bottom:0;background:#fff;z-index:998;padding:28px 6vw;overflow:auto}
+.tcs-mmenu{display:none;position:fixed;left:0;right:0;bottom:0;background:#fff;z-index:159;padding:28px 6vw;overflow:auto}
 .tcs-open .tcs-mmenu{display:block}
 .tcs-mmenu a{display:block;font-family:"DM Sans","Helvetica Neue",Arial,sans-serif;font-size:26px;color:#2b2b2b;text-decoration:none;padding:10px 0}
 .tcs-mmenu a.sub{font-size:20px;padding-left:18px;color:#555}
@@ -57,6 +57,23 @@
   .tcs-hdr-in{min-height:76px}.tcs-logo img{height:58px}
   .tcs-ann{font-size:12px;padding:10px 40px}
 }
+</style>
+
+<style id="tcs-promo-css">
+/* Floating buttons: stack on phones instead of overlapping */
+@media(max-width:720px){
+  .ov-launcher{right:20px!important;bottom:84px!important;padding:11px 18px!important;font-size:12.5px!important}
+  body{padding-bottom:84px}
+}
+/* Countdown */
+.tcs-timer{position:relative;z-index:1;margin-top:16px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.tcs-timer-lbl{font-family:var(--sub);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--sky);font-weight:700}
+.tcs-timer-row{display:flex;gap:8px}
+.tcs-timer-u{min-width:52px;padding:7px 4px 6px;border-radius:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);text-align:center}
+.tcs-timer-u b{display:block;font-family:var(--serif);font-size:22px;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.tcs-timer-u span{display:block;margin-top:4px;font-family:var(--sub);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.ov-launcher .tcs-left{opacity:.85;font-weight:600;margin-left:6px;padding-left:8px;border-left:1px solid rgba(255,255,255,.35)}
+.tcs-expired .tcs-timer,.tcs-expired .tcs-left{display:none!important}
 </style>
 </head>
 <body>
@@ -508,6 +525,15 @@ footer .orb{background:rgba(178,221,223,.06);width:340px;height:340px;top:-160px
       <div class="ov-eyebrow">Welcome to The Clean Standard</div>
       <div class="ov-pct" id="ovTitle">10<sup>%</sup> off</div>
       <div class="ov-sub">your first clean</div>
+      <div class="tcs-timer" aria-live="off">
+        <div class="tcs-timer-lbl">Offer ends Oct 31 · Time left</div>
+        <div class="tcs-timer-row" role="timer">
+          <div class="tcs-timer-u"><b data-u="d">--</b><span>Days</span></div>
+          <div class="tcs-timer-u"><b data-u="h">--</b><span>Hrs</span></div>
+          <div class="tcs-timer-u"><b data-u="m">--</b><span>Min</span></div>
+          <div class="tcs-timer-u"><b data-u="s">--</b><span>Sec</span></div>
+        </div>
+      </div>
     </div>
     <div class="ov-body">
       <p>Drop your phone and email below and we will send your code, along with a quick text or call to walk you through your free quote.</p>
@@ -525,7 +551,7 @@ footer .orb{background:rgba(178,221,223,.06);width:340px;height:340px;top:-160px
     </div>
   </div>
 </div>
-<button class="ov-launcher" id="ovLauncher" aria-label="Open 10% off offer"><svg class="icn" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L19.5 11l-5.6 2.2L12 19l-1.9-5.8L4.5 11l5.6-2.2z"></path><path d="M19 3l.7 2.1L22 6l-2.3.9L19 9l-.7-2.1L16 6l2.3-.9z"></path></svg><span>10% off first clean</span></button>
+<button class="ov-launcher" id="ovLauncher" aria-label="Open 10% off offer"><svg class="icn" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L19.5 11l-5.6 2.2L12 19l-1.9-5.8L4.5 11l5.6-2.2z"></path><path d="M19 3l.7 2.1L22 6l-2.3.9L19 9l-.7-2.1L16 6l2.3-.9z"></path></svg><span>10% off first clean</span><span class="tcs-left"></span></button>
 <a class="floating-phone" href="tel:5082058810"><svg class="icn" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>Call (508) 205-8810</a>
 
 <script>
@@ -571,5 +597,22 @@ document.querySelectorAll('.acc-btn').forEach(btn=>{
 <style class="transform-overrides-vars">
   
 </style>
+
+<script>
+(function(){
+  var end=new Date('2026-10-31T23:59:59-04:00').getTime();
+  function pad(n){return (n<10?'0':'')+n;}
+  function tick(){
+    var ms=end-Date.now();
+    if(ms<=0){document.documentElement.classList.add('tcs-expired');return false;}
+    var s=Math.floor(ms/1000),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),x=s%60;
+    var v={d:pad(d),h:pad(h),m:pad(m),s:pad(x)};
+    document.querySelectorAll('.tcs-timer [data-u]').forEach(function(el){el.textContent=v[el.getAttribute('data-u')];});
+    document.querySelectorAll('.tcs-left').forEach(function(el){el.textContent=d>0?(d+'d left'):(h>0?(h+'h left'):(m+'m left'));});
+    return true;
+  }
+  if(tick()){var t=setInterval(function(){if(!tick())clearInterval(t);},1000);}
+})();
+</script>
 </body>
 </html>

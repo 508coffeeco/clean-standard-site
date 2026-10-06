@@ -607,6 +607,34 @@ footer .orb{background:rgba(178,221,223,.06);width:340px;height:340px;top:-160px
 </footer>
 
 
+
+<div class="ov" id="tcsTrialOv" role="dialog" aria-modal="true" aria-labelledby="tcsTrialTitle">
+  <div class="ov-card">
+    <div class="ov-top">
+      <div class="orb"></div>
+      <button class="ov-close" id="tcsTrialClose" aria-label="Close"><svg class="icn" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      <div class="ov-eyebrow">For Tampa Bay Businesses</div>
+      <div class="ov-pct" id="tcsTrialTitle">Free</div>
+      <div class="ov-sub">trial clean for new recurring commercial accounts</div>
+    </div>
+    <div class="ov-body">
+      <p>See the standard before you sign. Leave your info and we will call to schedule a free walkthrough and your trial clean.</p>
+      <form class="ov-form" id="tcsTrialForm">
+        <div class="fld"><label for="tcsTrialBiz">Business name</label><input id="tcsTrialBiz" type="text" required placeholder="Your business" autocomplete="organization"></div>
+        <div class="fld"><label for="tcsTrialPhone">Phone (we will call you)</label><input id="tcsTrialPhone" type="tel" required placeholder="(813) 555-0123" autocomplete="tel"></div>
+        <div class="fld"><label for="tcsTrialEmail">Email</label><input id="tcsTrialEmail" type="email" required placeholder="you@company.com" autocomplete="email"></div>
+        <button type="submit" class="btn primary" style="width:100%">Claim My Free Trial Clean</button>
+        <p class="form-fine">For new recurring commercial accounts. One trial clean per business, scheduled after a free walkthrough. No obligation.</p>
+      </form>
+      <div class="ov-success">
+        <div class="ov-pct" style="font-size:30px!important">You're on the list.</div>
+        <p style="font-size:14.5px;color:var(--grey);margin:8px 0 18px">We will call within 24 hours to schedule your free walkthrough and trial clean.</p>
+        <a class="btn primary" href="tel:5082058810">Call (508) 205-8810</a>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="ov-launcher" id="tcsTrialLauncher" aria-label="Open free trial clean offer"><svg class="icn" viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L19.5 11l-5.6 2.2L12 19l-1.9-5.8L4.5 11l5.6-2.2z"></path><path d="M19 3l.7 2.1L22 6l-2.3.9L19 9l-.7-2.1L16 6l2.3-.9z"></path></svg><span>Free trial clean</span></button>
 <a class="floating-phone" href="tel:5082058810"><svg class="icn" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>Call (508) 205-8810</a>
 
 <script>
@@ -643,6 +671,25 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   </style><style class="transform-overrides-vars">
   
 </style>
+
+<script>
+(function(){
+  var ov=document.getElementById('tcsTrialOv'),btn=document.getElementById('tcsTrialLauncher'),x=document.getElementById('tcsTrialClose'),f=document.getElementById('tcsTrialForm');
+  if(!ov)return;
+  [ov,btn].forEach(function(el){if(el.parentElement!==document.body)document.body.appendChild(el);});
+  var K='tcs_trial_seen';
+  function open(){ov.classList.add('show');btn.classList.remove('show');document.body.style.overflow='hidden';try{localStorage.setItem(K,'1');}catch(e){}}
+  function close(){ov.classList.remove('show');document.body.style.overflow='';btn.classList.add('show');}
+  var seen=false;try{seen=localStorage.getItem(K)==='1';}catch(e){}
+  if(!seen){setTimeout(open,6000);}else{btn.classList.add('show');}
+  x.addEventListener('click',close);btn.addEventListener('click',open);
+  ov.addEventListener('click',function(e){if(e.target===ov)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('show'))close();});
+  f.addEventListener('submit',function(e){e.preventDefault();
+    if(window.tcsSend){tcsSend(f,'Free trial clean request (commercial) - '+location.pathname,function(){});}
+    ov.classList.add('success');});
+})();
+</script>
 
 <script>
 (function(){

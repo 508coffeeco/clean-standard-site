@@ -1,16 +1,15 @@
-# The Clean Standard
+# Protocol Facility Services
 
-> Owner-operated commercial cleaning company based in Tampa, Florida, serving Tampa Bay:
-> offices, medical and dental practices, retail, fitness studios, coworking spaces, and
-> property managers. Also short-term rental (Airbnb) turnovers and residential cleaning.
+> Owner-operated commercial cleaning company based in Tampa, Florida, serving Tampa Bay.
+> Focused on med spas, medical and dental offices, and restaurants, plus professional
+> offices, retail, fitness studios, coworking spaces, and property managers.
+> Commercial cleaning only. Formerly named The Clean Standard.
 
 ## What we do
 - Commercial and office cleaning, recurring and after-hours: https://www.settingthecleanstandard.com/commercial
 - Office cleaning: https://www.settingthecleanstandard.com/blog/office-cleaning-tampa
-- Medical, dental, chiropractic, and med spa office cleaning: https://www.settingthecleanstandard.com/blog/medical-office-cleaning
+- Med spa, medical, dental, and chiropractic office cleaning: https://www.settingthecleanstandard.com/blog/medical-office-cleaning
 - Property management: common areas, clubhouses, leasing offices, vacant unit turnovers: https://www.settingthecleanstandard.com/blog/property-management-cleaning
-- Airbnb and short-term rental turnovers with photo documentation: https://www.settingthecleanstandard.com/airbnb-str
-- Residential: recurring, deep, move-in/move-out, post-construction: https://www.settingthecleanstandard.com/residential
 
 ## Local pages
 - Commercial Cleaning in Tampa, FL: https://www.settingthecleanstandard.com/commercial-cleaning-tampa
@@ -19,9 +18,9 @@
 - Janitorial Services in Tampa Bay: https://www.settingthecleanstandard.com/janitorial-services-tampa
 
 ## How it works
-- Free walkthrough for commercial accounts; response within 24 hours
+- Free walkthrough and free trial clean for new recurring commercial accounts; response within 24 hours
 - Flat per-visit pricing based on square footage, frequency, and scope
-- Written checklist for every space; owner on every account
+- Written cleaning protocol for every space; owner on every account
 - Recurring commercial service is month-to-month (30 days' written notice to cancel)
 - Re-clean guarantee: missed checklist items reported within 24 hours are fixed at no charge
 

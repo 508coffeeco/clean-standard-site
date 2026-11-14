@@ -61,6 +61,26 @@
       "source": "/venue-brewery-church-cleaning",
       "destination": "/blog/venue-brewery-church-cleaning",
       "permanent": true
+    },
+    {
+      "source": "/residential",
+      "destination": "/commercial",
+      "permanent": true
+    },
+    {
+      "source": "/airbnb-str",
+      "destination": "/commercial",
+      "permanent": true
+    },
+    {
+      "source": "/residential-funnel",
+      "destination": "/commercial",
+      "permanent": true
+    },
+    {
+      "source": "/str-funnel",
+      "destination": "/commercial",
+      "permanent": true
     }
   ]
 }
